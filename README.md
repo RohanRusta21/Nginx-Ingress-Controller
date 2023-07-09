@@ -6,6 +6,13 @@ chmod 700 get_helm.sh
 ./get_helm.sh
 ```
 
+# Install KubeSeal
+
+```
+helm repo add sealed-secrets https://bitnami-labs.github.io/sealed-secrets
+helm repo update
+helm install sealed-secrets-controller sealed-secrets/sealed-secrets
+```
 
 # Nginx-Ingress-Controller
 
