@@ -58,7 +58,10 @@ kubectl get svc -n ingress-nginx
 
 ```
 pipeline {
-    agent any 
+    agent any
+    environment {
+        SNYK_TOKEN = credentials('snyk-token')
+    }
     
     stages {
         stage("Clone Code") {
@@ -75,8 +78,7 @@ pipeline {
         }
         stage("Scan with Image Snyk") {
             steps {
-                sh 'snyk auth'
-                sh 'snyk test --all-projects'
+                sh 'snyk test --all-projects --token=$SNYK_TOKEN'
             }
         }
         stage("Deploy") {
@@ -87,5 +89,6 @@ pipeline {
         }
     }
 }
+
 
 ```
