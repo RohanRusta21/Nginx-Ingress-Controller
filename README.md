@@ -1,3 +1,11 @@
+# Docker for Jenkins
+
+```
+sudo usermod -aG docker jenkins
+sudo usermod -aG docker $USER
+```
+
+
 # Install Helm
 
 ```
